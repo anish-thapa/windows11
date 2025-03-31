@@ -1,0 +1,735 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
+
+}
+
+body {
+    overflow: hidden;
+}
+
+.desktop {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('wallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: background-image 0.5s ease;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-gap: 20px;
+    align-content: start;
+}
+
+.icon {
+    width: 80px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.icon:active {
+    transform: scale(0.95);
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    transition: transform 0.2s ease;
+}
+
+.icon span {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 100;
+    animation: slideUp 0.5s ease-out;
+}
+
+/* Fix the taskbar-left styles */
+.taskbar-left {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 6px;
+}
+
+/* Keep the right section at the right edge */
+.taskbar-right {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+}
+
+/* Media queries for responsive taskbar */
+@media (max-width: 768px) {
+    .taskbar-left {
+        position: static;
+        left: auto;
+        transform: none;
+        margin-left: 10px;
+        gap: 4px;
+    }
+    
+    .taskbar-right {
+        position: static;
+        right: auto;
+        margin-left: auto;
+    }
+    
+    .taskbar {
+        justify-content: space-between;
+    }
+}
+
+/* Improved media queries for better responsiveness */
+@media (max-width: 768px) {
+    .taskbar-left {
+        position: static;
+        left: auto;
+        transform: none;
+        margin-left: 10px;
+        gap: 4px; /* Reduce gap on smaller screens */
+    }
+    
+    .taskbar-right {
+        position: static;
+        right: auto;
+        margin-left: auto;
+    }
+    
+    .taskbar {
+        justify-content: space-between;
+        height: 48px;
+    }
+    
+    /* Ensure system icons are properly spaced */
+    .system-icons {
+        margin-right: 6px;
+    }
+    
+    .system-icon {
+        margin-right: 6px;
+    }
+    
+    /* Make datetime more compact */
+    .datetime {
+        min-width: 60px;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+    .taskbar-app, .start-button, .search-button, .task-view-button {
+        width: 36px;
+        height: 36px;
+        margin-right: 2px;
+    }
+    
+    .taskbar-left {
+        gap: 2px;
+    }
+    
+    .system-icon {
+        margin-right: 4px;
+        font-size: 12px;
+    }
+    
+    .time {
+        font-size: 12px;
+    }
+    
+    .date {
+        font-size: 10px;
+    }
+}
+
+/* Adjust desktop content to prevent overlap with fixed taskbar */
+.desktop {
+    padding-bottom: 48px;
+    height: 100vh;
+    overflow-y: auto; /* Allow scrolling of desktop content */
+    overflow-x: hidden;
+}
+
+/* Adjust start menu position for smaller screens */
+.start-menu {
+    width: 90%;
+    max-width: 550px;
+    left: 50%;
+    bottom: 50px; /* Position above taskbar */
+    max-height: calc(100vh - 60px); /* Prevent overflow */
+    overflow-y: auto;
+}
+
+/* Update the start button to use the Windows 11 logo */
+.start-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.start-button, .search-button, .task-view-button, .taskbar-app {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.start-button:hover, .search-button:hover, .task-view-button:hover, .taskbar-app:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.start-button:active, .search-button:active, .task-view-button:active, .taskbar-app:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.start-button i, .search-button i, .task-view-button i {
+    color: white;
+    font-size: 18px;
+}
+
+.taskbar-apps {
+    display: flex;
+    margin-left: 10px;
+    gap: 4px; /* Add consistent gap between icons */
+}
+
+.taskbar-app img {
+    width: 28px; /* Standardized size for all taskbar app icons */
+    height: 28px;
+    transition: transform 0.2s ease;
+}
+
+/* Also standardize other icon sizes */
+.start-button img, .search-button img, .task-view-button img, .taskbar-icon img {
+    width: 28px; /* Match the size of app icons */
+    height: 28px;
+    transition: transform 0.2s ease;
+}
+
+.taskbar-app.active {
+    border-bottom: 2px solid #0078d7;
+}
+
+.taskbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.action-center {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.action-center:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.notification-icon {
+    margin-right: 10px;
+}
+
+.time, .date {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Start Menu */
+.start-menu {
+    position: absolute;
+    bottom: 60px; /* Increased from 48px to give more space from taskbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 550px;
+    height: 650px;
+    background-color: rgba(32, 32, 32, 0.95);
+    backdrop-filter: blur(30px);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 200;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: bottom center;
+}
+
+.start-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+.start-menu-header {
+    margin-bottom: 20px;
+}
+
+.pinned-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.pinned-section h3 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.all-apps {
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.all-apps:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.start-menu-apps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 12px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Remove the background color */
+    border-radius: 8px;
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 90px;
+}
+
+.app-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.app-item:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.app-item img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease;
+}
+
+.app-item span {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Recommended section */
+.recommended-section {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.start-menu-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recommended-section h3 {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.more-link {
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.more-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.recommended-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
+}
+
+.recommended-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.recommended-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.recommended-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+}
+
+.recommended-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.recommended-item-name {
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.recommended-item-time {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.start-menu-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    color: white;
+    transition: background-color 0.2s ease;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.power-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.power-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.power-button:active {
+    transform: scale(0.9);
+}
+
+/* Wallpaper transition */
+.wallpaper-transition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: -1;
+}
+
+/* Tooltip */
+.tooltip {
+    display: none; /* Hide tooltips completely */
+    position: absolute;
+    background-color: rgba(36, 36, 36, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(10px);
+    z-index: 300;
+}
+
+.tooltip.visible {
+    display: none; /* Ensure tooltips remain hidden even when they would be visible */
+    opacity: 0;
+}
+
+/* Animation for desktop icons appearing */
+.desktop-icons .icon {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger the animation for each icon */
+.desktop-icons .icon:nth-child(1) { animation-delay: 0.1s; }
+.desktop-icons .icon:nth-child(2) { animation-delay: 0.2s; }
+.desktop-icons .icon:nth-child(3) { animation-delay: 0.3s; }
+.desktop-icons .icon:nth-child(4) { animation-delay: 0.4s; }
+.desktop-icons .icon:nth-child(5) { animation-delay: 0.5s; }
+
+
+/* System tray icons */
+.system-icons {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.system-icon {
+    margin-right: 8px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.system-icon:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.datetime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.time {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* Desktop Icons - Column Layout */
+.desktop-icons {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Enhanced Taskbar Styling */
+.taskbar-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.taskbar-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.taskbar-icon:active {
+    transform: scale(0.95);
+}
+
+.taskbar-icon img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.taskbar-app {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0; /* Remove margin-right since we're using gap */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+/* Also update the other taskbar elements for consistency */
+.start-button, .search-button, .task-view-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0; /* Remove margin-right */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.taskbar-app:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.taskbar-app img {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.2s ease;
+}
+
+.app-indicator {
+    position: absolute;
+    bottom: 2px;
+    width: 4px;
+    height: 4px;
+    background-color: #0078d7;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.taskbar-app:hover .app-indicator {
+    opacity: 1;
+    width: 16px;
+    border-radius: 2px;
+}
+
+.taskbar-app.active .app-indicator {
+    opacity: 1;
+    width: 16px;
+    border-radius: 2px;
+}
+
+/* Hide scrollbar for webkit browsers */
+.start-menu-apps::-webkit-scrollbar,
+.recommended-items::-webkit-scrollbar,
+.start-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.start-menu-apps,
+.recommended-items,
+.start-menu {
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.start-menu-apps,
+.recommended-items,
+.start-menu {
+    -ms-overflow-style: none;
+}

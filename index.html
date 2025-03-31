@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11</title>
+    <link rel="shortcut icon" href="icons/windows-11.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="icon">
+                <img src="icons/recycle-bin.png" alt="Recycle Bin">
+                <span>Recycle Bin</span>
+            </div>
+            <div class="icon">
+                <img src="icons/edge.png" alt="Microsoft Edge">
+                <span>Microsoft Edge</span>
+            </div>
+            <div class="icon">
+                <img src="icons/file-explorer.png" alt="File Explorer">
+                <span>File Explorer</span>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <div class="start-button taskbar-icon">
+                    <img src="icons/windows-11.png" alt="Start">
+                </div>
+                <div class="search-button taskbar-icon">
+                    <img src="icons/search.png" alt="Search">
+                </div>
+                <div class="task-view-button taskbar-icon">
+                    <img src="icons/cmd.png" alt="CMD">
+                </div>
+                
+                    <div class="taskbar-app">
+                        <img src="icons/edge.png" alt="Microsoft Edge">
+                        <div class="app-indicator"></div>
+                    </div>
+                    <div class="taskbar-app">
+                        <img src="icons/file-explorer.png" alt="File Explorer">
+                        <div class="app-indicator"></div>
+                    </div>
+                    <div class="taskbar-app">
+                        <img src="icons/microsoft-store.png" alt="Microsoft Store">
+                        <div class="app-indicator"></div>
+                    </div>
+               
+            </div>
+            <div class="taskbar-right">
+                <div class="action-center">
+                    <div class="system-icons">
+                        <div class="system-icon"><i class="fa-solid fa-wifi"></i></div>
+                        <div class="system-icon"><i class="fa-solid fa-volume-high"></i></div>
+                        <div class="system-icon"><i class="fa-solid fa-battery-three-quarters"></i></div>
+                    </div>
+                    
+                    <div class="system-tray">
+                        <div class="datetime">
+                            <span class="time">12:00</span>
+                            <span class="date">1/1/2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Menu (Hidden by default) -->
+        <div class="start-menu" id="startMenu">
+            <div class="start-menu-header">
+                <div class="pinned-section">
+                    <h3>Pinned</h3>
+                    <span class="all-apps">All apps <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+            <div class="start-menu-apps">
+                <div class="app-item">
+                    <img src="icons/edge.png" alt="Microsoft Edge">
+                    <span>Edge</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/word.png" alt="Microsoft Word">
+                    <span>Word</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/excel.png" alt="Microsoft Excel">
+                    <span>Excel</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/powerpoint.png" alt="Microsoft PowerPoint">
+                    <span>PowerPoint</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/mail.png" alt="Mail">
+                    <span>Mail</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/photos.png" alt="Photos">
+                    <span>Photos</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/settings.png" alt="Settings">
+                    <span>Settings</span>
+                </div>
+                <div class="app-item">
+                    <img src="icons/calculator.png" alt="Calculator">
+                    <span>Calculator</span>
+                </div>
+            </div>
+            
+            <div class="recommended-section">
+                <h3>
+                    Recommended
+                    <span class="more-link">More <i class="fa-solid fa-chevron-right"></i></span>
+                </h3>
+                <div class="recommended-items">
+                    <div class="recommended-item">
+                        <img src="icons/word.png" alt="Word">
+                        <div class="recommended-item-info">
+                            <span class="recommended-item-name">final paper</span>
+                            <span class="recommended-item-time">Recently added</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <img src="icons/file-explorer.png" alt="File Explorer">
+                        <div class="recommended-item-info">
+                            <span class="recommended-item-name">assignment</span>
+                            <span class="recommended-item-time">5m ago</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <img src="icons/cmd.png" alt="Command Prompt">
+                        <div class="recommended-item-info">
+                            <span class="recommended-item-name">cmd</span>
+                            <span class="recommended-item-time">5m ago</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <img src="icons/photos.png" alt="Photos">
+                        <div class="recommended-item-info">
+                            <span class="recommended-item-name">wallpaper</span>
+                            <span class="recommended-item-time">12m ago</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <img src="icons/microsoft-store.png" alt="Microsoft Store">
+                        <div class="recommended-item-info">
+                            <span class="recommended-item-name">microsoft-store</span>
+                            <span class="recommended-item-time">15m ago</span>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <img src="icons/powerpoint.png" alt="PowerPoint">
+                        <div class="recommended-item-info">
+                            <span class="recommended-item-name">powerpoint</span>
+                            <span class="recommended-item-time">16m ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="start-menu-footer">
+                <div class="user-profile">
+                    <img src="icons/user.png" alt="User">
+                    <span>User</span>
+                </div>
+                <div class="power-button">
+                    <i class="fa-solid fa-power-off"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
